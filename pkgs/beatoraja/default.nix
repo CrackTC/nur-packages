@@ -47,7 +47,6 @@ stdenv.mkDerivation {
     echo "cp -r $out/share/beatoraja/skin ./" >> ${fullName}/beatoraja.sh
     echo "cp -r $out/share/beatoraja/sound ./" >> ${fullName}/beatoraja.sh
     echo "cp -r $out/share/beatoraja/table ./" >> ${fullName}/beatoraja.sh
-    echo "cp -r $out/share/beatoraja/beatoraja.jar ./" >> ${fullName}/beatoraja.sh
 
     echo "find . -type d -exec chmod 755 {} \;" >> ${fullName}/beatoraja.sh
     echo "find . -type f -exec chmod 644 {} \;" >> ${fullName}/beatoraja.sh
@@ -55,7 +54,7 @@ stdenv.mkDerivation {
     echo "fi" >> ${fullName}/beatoraja.sh
 
     echo 'cd "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> ${fullName}/beatoraja.sh
-    echo "exec ${jre}/bin/java -Xms1g -Xmx4g -jar './beatoraja.jar'" >> ${fullName}/beatoraja.sh
+    echo "exec ${jre}/bin/java -Xms1g -Xmx4g -jar '$out/share/beatoraja/beatoraja.jar'" >> ${fullName}/beatoraja.sh
     chmod +x ${fullName}/beatoraja.sh
   '';
 
