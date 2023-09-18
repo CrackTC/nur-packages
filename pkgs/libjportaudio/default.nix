@@ -37,6 +37,6 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/lib
-    cp -r libjportaudio_0_1_0.so $out/lib/libjportaudio.so
+    cp libjportaudio_0_1_0.so $out/lib/libjportaudio.so
   '';
 }
