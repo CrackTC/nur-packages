@@ -9,6 +9,9 @@
 , libpqxx
 , unixODBC
 , gst_all_1
+, pulseaudio
+, alsa-lib
+, qtwayland
 }:
 
 stdenv.mkDerivation rec {
@@ -22,10 +25,15 @@ stdenv.mkDerivation rec {
 
   unpackPhase = "dpkg-deb -x $src .";
 
+  dontWrapQtApps = true;
+
   nativeBuildInputs = [
     dpkg
     wrapGAppsHook
     autoPatchelfHook
+    pulseaudio
+    alsa-lib
+    qtwayland
   ];
 
   buildInputs = [

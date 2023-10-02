@@ -17,7 +17,7 @@ rec {
   example-package = pkgs.callPackage ./pkgs/example-package { };
   beatoraja = pkgs.callPackage ./pkgs/beatoraja { libjportaudio = libjportaudio; };
   libjportaudio = pkgs.callPackage ./pkgs/libjportaudio { };
-  freedownloadmanager = pkgs.callPackage ./pkgs/freedownloadmanager { };
+  freedownloadmanager = pkgs.libsForQt5.callPackage ./pkgs/freedownloadmanager { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
