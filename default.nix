@@ -18,6 +18,7 @@ rec {
   beatoraja = pkgs.callPackage ./pkgs/beatoraja { libjportaudio = libjportaudio; };
   libjportaudio = pkgs.callPackage ./pkgs/libjportaudio { };
   freedownloadmanager = pkgs.libsForQt5.callPackage ./pkgs/freedownloadmanager { };
+  hpfan = pkgs.callPackage ./pkgs/hpfan { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
