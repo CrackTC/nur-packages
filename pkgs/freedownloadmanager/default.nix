@@ -3,6 +3,7 @@
 , fetchurl
 , dpkg
 , wrapGAppsHook
+, makeWrapper
 , autoPatchelfHook
 , udev
 , libdrm
@@ -34,6 +35,7 @@ stdenv.mkDerivation rec {
     pulseaudio
     alsa-lib
     qtwayland
+    makeWrapper
   ];
 
   buildInputs = [
@@ -63,6 +65,9 @@ stdenv.mkDerivation rec {
     substituteInPlace $out/share/applications/freedownloadmanager.desktop \
       --replace 'Exec=/opt/freedownloadmanager/fdm' 'Exec=${pname}' \
       --replace "Icon=/opt/freedownloadmanager/icon.png" "Icon=$out/freedownloadmanager/icon.png"
+
+    wrapProgram $out/bin/${pname} \
+      --set QT_QPA_PLATFORM xcb
   '';
 
   meta = with lib; {
@@ -71,6 +76,5 @@ stdenv.mkDerivation rec {
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [ ];
   };
 }
