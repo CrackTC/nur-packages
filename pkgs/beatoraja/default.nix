@@ -1,4 +1,5 @@
-{ stdenv
+{ lib
+, stdenv
 , fetchurl
 , oraclejre8
 , unzip
@@ -76,4 +77,13 @@ stdenv.mkDerivation {
 
     runHook postInstall
   '';
+
+  meta = with lib; {
+    description = "Cross-platform rhythm game based on Java and libGDX.";
+    homepage = "https://github.com/exch-bms2/beatoraja";
+    license = licenses.gpl3;
+    platforms = [ "x86_64-linux" ];
+    mainProgram = "beatoraja";
+    sourceProvenance = with sourceTypes; [ binaryBytecode ];
+  };
 }
