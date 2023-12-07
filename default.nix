@@ -20,6 +20,7 @@ rec {
   freedownloadmanager = pkgs.libsForQt5.callPackage ./pkgs/freedownloadmanager { };
   hpfan = pkgs.callPackage ./pkgs/hpfan { };
   bbdown = pkgs.callPackage ./pkgs/bbdown { };
+  danmaku2ass = pkgs.callPackage ./pkgs/danmaku2ass { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
