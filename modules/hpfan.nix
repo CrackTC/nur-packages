@@ -2,6 +2,10 @@
 let
   hpfan = pkgs.callPackage ../pkgs/hpfan { };
   cfg = config.services.hpfan;
+  mkArg = defaultValue: name: value:
+    if value == defaultValue then [ ] else [ name (toString value) ];
+  mkArgs = args:
+    lib.strings.concatStringsSep " " (builtins.concatLists args);
 in
 {
   options = {
@@ -30,12 +34,11 @@ in
 
   config =
     let
-      args = lib.strings.concatStringsSep " "
-        (builtins.concatLists [
-          (if cfg.temperatureFile != "" then [ "-t" cfg.temperatureFile ] else [ ])
-          (if cfg.pwmFile != "" then [ "-p" cfg.pwmFile ] else [ ])
-          (if cfg.wall != null then [ "-w" (toString cfg.wall) ] else [ ])
-        ]);
+      args = mkArgs [
+        (mkArg "" "-t" cfg.temperatureFile)
+        (mkArg "" "-p" cfg.pwmFile)
+        (mkArg null "-w" cfg.wall)
+      ];
     in
     lib.mkIf cfg.enable {
       systemd.services.hpfan = {
