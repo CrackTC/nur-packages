@@ -5,6 +5,7 @@
 , danmaku2ass
 , python3
 , mpv
+, makeWrapper
 }:
 let python = python3.withPackages (ps: with ps; [ requests ]); in
 stdenv.mkDerivation {
@@ -16,6 +17,8 @@ stdenv.mkDerivation {
     rev = "main";
     sha256 = "sha256-YhxvUrO5mmZSptizwwNYUfTasq+WhHnDN6NGxosZk9M=";
   };
+
+  nativeBuildInputs = [ makeWrapper ];
 
   buildInputs = [
     bbdown
@@ -30,6 +33,14 @@ stdenv.mkDerivation {
     cp bmpv.desktop $out/share/applications
     cp ./bmpv.py $out/bin/bmpv
     chmod +x $out/bin/bmpv
+
+    wrapProgram $out/bin/bmpv \
+      --set PATH ${lib.makeBinPath [
+        bbdown
+        danmaku2ass
+        python
+        mpv
+      ]}
   '';
 
   meta = with lib; {
