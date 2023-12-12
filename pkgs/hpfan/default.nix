@@ -21,7 +21,11 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
+    runHook preInstall
+
     mkdir -p $out/bin
     cp hpfan $out/bin
+
+    runHook postInstall
   '';
 }
