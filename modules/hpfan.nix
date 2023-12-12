@@ -49,6 +49,7 @@ in
           ExecStart = "${hpfan}/bin/hpfan ${args}";
           Restart = "always";
         };
+        wantedBy = [ "multi-user.target" ];
       };
     };
 }
