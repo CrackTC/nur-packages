@@ -38,7 +38,6 @@ stdenv.mkDerivation {
       --set PATH ${lib.makeBinPath [
         bbdown
         danmaku2ass
-        python
         mpv
       ]}
   '';
