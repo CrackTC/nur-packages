@@ -17,8 +17,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "CrackTC";
     repo = "rofi-ts";
-    rev = "c8a867136591ae26c26975a87b9e848f7cef4f40";
-    hash = "sha256-4qw6mwwWG/R3f9vP9a5LpdybO5usxSdyrpuz21raFmw=";
+    rev = "5ba85ec4c8c0684739f30cb84e66d20765f60c71";
+    hash = "sha256-ALZNM9heKSlJ6N+zk9EpAbTNlbt1EbMvod8aD5avo2Q=";
   };
 
   nativeBuildInputs = [
