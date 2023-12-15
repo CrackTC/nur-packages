@@ -22,6 +22,7 @@ rec {
   bbdown = pkgs.callPackage ./pkgs/bbdown { };
   danmaku2ass = pkgs.callPackage ./pkgs/danmaku2ass { };
   bmpv = pkgs.callPackage ./pkgs/bmpv { inherit bbdown danmaku2ass; };
+  rofi-ts = pkgs.callPackage ./pkgs/rofi-ts { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
