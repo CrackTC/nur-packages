@@ -6,26 +6,24 @@
 , wrapGAppsHook
 , cairo
 , glib
-, gobject-introspection
 , rofi-unwrapped
 , translate-shell
 }:
 stdenv.mkDerivation {
   pname = "rofi-ts";
-  version = "0.1.0";
+  version = "unstable-2023-12-18";
 
   src = fetchFromGitHub {
     owner = "CrackTC";
     repo = "rofi-ts";
-    rev = "5ba85ec4c8c0684739f30cb84e66d20765f60c71";
-    hash = "sha256-ALZNM9heKSlJ6N+zk9EpAbTNlbt1EbMvod8aD5avo2Q=";
+    rev = "8f78e633d48c10413992f98be61c09409335be5f";
+    hash = "sha256-rx3AyBRdkzAg595qFnVFTPOwWwDEd32LX++wHrJ+kCA=";
   };
 
   nativeBuildInputs = [
     autoreconfHook
     pkg-config
     wrapGAppsHook
-    gobject-introspection
   ];
 
   buildInputs = [
