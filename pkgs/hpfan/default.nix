@@ -3,7 +3,7 @@
 }:
 
 let
-  version = "v1.1.1";
+  version = "unstable-2024-01-09";
   pname = "hpfan";
 in
 stdenv.mkDerivation rec {
@@ -12,8 +12,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub ({
     owner = "CrackTC";
     repo = "hpfan";
-    rev = version;
-    sha256 = "sha256-Bttq1pvTPbJIcXJV07cquL9Wgh0Vwgl5Pn62bvr+4IY=";
+    rev = "67f608e1eea9d0dce9626652da211472a0e4ebd9";
+    sha256 = "sha256-OcLR388oW56RIicCPDmrWn27olnk3j+iRLn7tKiggbI=";
   });
 
   buildPhase = ''
