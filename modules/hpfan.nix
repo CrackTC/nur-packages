@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }:
 let
   hpfan = pkgs.callPackage ../pkgs/hpfan { };
+  exec = pkgs.writeScript "hpfan" ''
+    #!${pkgs.fish}/bin/fish
+    ${hpfan}/bin/hpfan $argv >/dev/null 2>&1 &
+    while true
+      echo -n -e "\x31" | dd of=/sys/kernel/debug/ec/ec0/io bs=1 seek=149 count=1 conv=notrunc >/dev/null 2>&1
+      sleep 30
+    end
+  '';
   cfg = config.services.hpfan;
   mkArg = defaultValue: name: value:
     if value == defaultValue then [ ] else [ name (toString value) ];
@@ -46,7 +54,7 @@ in
         after = [ "sysinit.target" ];
         serviceConfig = {
           User = "root";
-          ExecStart = "${hpfan}/bin/hpfan ${args}";
+          ExecStart = "${exec} ${args}";
           Restart = "always";
         };
         wantedBy = [ "multi-user.target" ];
