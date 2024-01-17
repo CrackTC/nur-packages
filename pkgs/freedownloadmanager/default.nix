@@ -13,15 +13,16 @@
 , pulseaudio
 , alsa-lib
 , qtwayland
+, libmysqlconnectorcpp
 }:
 
 stdenv.mkDerivation rec {
   pname = "freedownloadmanager";
-  version = "6.19.0";
+  version = "6.20.0";
 
   src = fetchurl {
     url = "https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb";
-    hash = "sha256-3KmNhkEEOzW5qiK6e4ZPI9wbTdA2EFWUH5Z1K8kdXWw=";
+    hash = "sha256-FkoRvF/2NOdPkCxjNNFZ9gjN9FwDego0l90SNrvTRsU=";
   };
 
   unpackPhase = "dpkg-deb -x $src .";
@@ -43,6 +44,7 @@ stdenv.mkDerivation rec {
     libpqxx
     unixODBC
     stdenv.cc.cc
+    libmysqlconnectorcpp
   ] ++ (with gst_all_1; [
     gstreamer
     gst-libav
