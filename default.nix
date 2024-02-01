@@ -15,13 +15,14 @@ rec {
   overlays = import ./overlays; # nixpkgs overlays
 
   example-package = pkgs.callPackage ./pkgs/example-package { };
+  bbdown = pkgs.callPackage ./pkgs/bbdown { };
   beatoraja = pkgs.callPackage ./pkgs/beatoraja { inherit libjportaudio; };
-  libjportaudio = pkgs.callPackage ./pkgs/libjportaudio { };
+  bmpv = pkgs.callPackage ./pkgs/bmpv { inherit bbdown danmaku2ass; };
+  csharprepl = pkgs.callPackage ./pkgs/csharprepl/default.nix { };
+  danmaku2ass = pkgs.callPackage ./pkgs/danmaku2ass { };
   freedownloadmanager = pkgs.libsForQt5.callPackage ./pkgs/freedownloadmanager { };
   hpfan = pkgs.callPackage ./pkgs/hpfan { };
-  bbdown = pkgs.callPackage ./pkgs/bbdown { };
-  danmaku2ass = pkgs.callPackage ./pkgs/danmaku2ass { };
-  bmpv = pkgs.callPackage ./pkgs/bmpv { inherit bbdown danmaku2ass; };
+  libjportaudio = pkgs.callPackage ./pkgs/libjportaudio { };
   rofi-ts = pkgs.callPackage ./pkgs/rofi-ts { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
