@@ -18,12 +18,12 @@ in
 stdenv.mkDerivation rec {
   inherit version pname;
   name = "${pname}-${version}";
-  src = fetchFromGitHub ({
+  src = fetchFromGitHub {
     owner = "philburk";
     repo = "portaudio-java";
     rev = "2ec5cc47d6f8abe85ddb09c34e69342bfe72c60b";
     sha256 = "t+Pqtgstd1uJjvD4GKomZHMeSECNLeQJOrz97o+lV2Q=";
-  });
+  };
 
   nativeBuildInputs = [ cmake portaudio ];
 

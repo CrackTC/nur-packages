@@ -1,6 +1,6 @@
 { lib
 , stdenv
-, fetchurl
+, fetchzip
 , oraclejre8
 , unzip
 , openal
@@ -17,46 +17,44 @@ let
     };
   };
   pname = "beatoraja-modernchic";
-  version = "0.8.5";
+  version = "0.8.6";
   fullName = "beatoraja${version}-modernchic";
 in
 stdenv.mkDerivation {
   inherit pname version;
   name = "${pname}-${version}";
-  src = fetchurl {
+  src = fetchzip {
     url = "https://mocha-repository.info/download/${fullName}.zip";
-    sha256 = "HiP+8hnPVKveyCGiXJaZrSca152OFW88aRybZTutYDI=";
+    hash = "sha256-IuaKRMXnmnqTdcXNncf8MCZwyusARjuzZL0IIFp8few=";
   };
 
   nativeBuildInputs = [ unzip makeWrapper ];
 
-  unpackPhase = "unzip $src";
-
   preInstall = ''
-    rm ${fullName}/beatoraja-config.*
-    echo "#!/bin/sh" > ${fullName}/beatoraja.sh
+    rm beatoraja-config.*
+    echo "#!/bin/sh" > beatoraja.sh
 
-    echo 'if [ ! -d "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja" ]; then' >> ${fullName}/beatoraja.sh
+    echo 'if [ ! -d "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja" ]; then' >> beatoraja.sh
 
-    echo 'mkdir -p "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> ${fullName}/beatoraja.sh
-    echo 'cd "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> ${fullName}/beatoraja.sh
+    echo 'mkdir -p "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> beatoraja.sh
+    echo 'cd "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> beatoraja.sh
 
-    echo "cp -r $out/share/beatoraja/bgm ./" >> ${fullName}/beatoraja.sh
-    echo "cp -r $out/share/beatoraja/defaultsound ./" >> ${fullName}/beatoraja.sh
-    echo "cp -r $out/share/beatoraja/folder ./" >> ${fullName}/beatoraja.sh
-    echo "cp -r $out/share/beatoraja/ir ./" >> ${fullName}/beatoraja.sh
-    echo "cp -r $out/share/beatoraja/skin ./" >> ${fullName}/beatoraja.sh
-    echo "cp -r $out/share/beatoraja/sound ./" >> ${fullName}/beatoraja.sh
-    echo "cp -r $out/share/beatoraja/table ./" >> ${fullName}/beatoraja.sh
+    echo "cp -r $out/share/beatoraja/bgm ./" >> beatoraja.sh
+    echo "cp -r $out/share/beatoraja/defaultsound ./" >> beatoraja.sh
+    echo "cp -r $out/share/beatoraja/folder ./" >> beatoraja.sh
+    echo "cp -r $out/share/beatoraja/ir ./" >> beatoraja.sh
+    echo "cp -r $out/share/beatoraja/skin ./" >> beatoraja.sh
+    echo "cp -r $out/share/beatoraja/sound ./" >> beatoraja.sh
+    echo "cp -r $out/share/beatoraja/table ./" >> beatoraja.sh
 
-    echo "find . -type d -exec chmod 755 {} \;" >> ${fullName}/beatoraja.sh
-    echo "find . -type f -exec chmod 644 {} \;" >> ${fullName}/beatoraja.sh
+    echo "find . -type d -exec chmod 755 {} \;" >> beatoraja.sh
+    echo "find . -type f -exec chmod 644 {} \;" >> beatoraja.sh
 
-    echo "fi" >> ${fullName}/beatoraja.sh
+    echo "fi" >> beatoraja.sh
 
-    echo 'cd "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> ${fullName}/beatoraja.sh
-    echo "exec ${jre}/bin/java -Xms1g -Xmx4g -jar '$out/share/beatoraja/beatoraja.jar'" >> ${fullName}/beatoraja.sh
-    chmod +x ${fullName}/beatoraja.sh
+    echo 'cd "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> beatoraja.sh
+    echo "exec ${jre}/bin/java -Xms1g -Xmx4g -jar '$out/share/beatoraja/beatoraja.jar'" >> beatoraja.sh
+    chmod +x beatoraja.sh
   '';
 
   installPhase = ''
@@ -64,8 +62,8 @@ stdenv.mkDerivation {
 
     mkdir -p $out/share/beatoraja
     mkdir -p $out/bin
-    mv ${fullName}/beatoraja.sh $out/bin/beatoraja
-    mv ${fullName}/* $out/share/beatoraja/
+    mv beatoraja.sh $out/bin/beatoraja
+    mv * $out/share/beatoraja/
 
     wrapProgram $out/bin/beatoraja \
       --prefix PATH : "${xrandr}/bin" \
