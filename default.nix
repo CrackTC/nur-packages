@@ -18,7 +18,6 @@ rec {
   bbdown = pkgs.callPackage ./pkgs/bbdown { };
   beatoraja = pkgs.callPackage ./pkgs/beatoraja { inherit libjportaudio; };
   bmpv = pkgs.callPackage ./pkgs/bmpv { inherit bbdown danmaku2ass; };
-  csharprepl = pkgs.callPackage ./pkgs/csharprepl/default.nix { };
   danmaku2ass = pkgs.callPackage ./pkgs/danmaku2ass { };
   freedownloadmanager = pkgs.libsForQt5.callPackage ./pkgs/freedownloadmanager { };
   hpfan = pkgs.callPackage ./pkgs/hpfan { };
