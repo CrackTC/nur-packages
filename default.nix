@@ -23,6 +23,7 @@ rec {
   hpfan = pkgs.callPackage ./pkgs/hpfan { };
   libjportaudio = pkgs.callPackage ./pkgs/libjportaudio { };
   rofi-ts = pkgs.callPackage ./pkgs/rofi-ts { };
+  rofi-ts-test = pkgs.callPackage ./pkgs/rofi-ts-test { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
