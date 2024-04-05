@@ -16,8 +16,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "manuhabitela";
     repo = "rofi-ts";
-    rev = "71f5de41f1bd1eafe8d6f8734dac20f8c46e2ba1";
-    hash = "sha256-OGkBdi0uCTjsvc34kWOPlv2HW47zvr+OK2pD18rLsNM=";
+    rev = "8e1a0805d18fac60cc943a85a75f7bdd70664cf2";
+    hash = "sha256-t0g7+LPMCYGwJ9eJbTAYlC2LODZcr23JUgKjgadQYZk=";
   };
 
   nativeBuildInputs = [
