@@ -11,13 +11,13 @@
 }:
 stdenv.mkDerivation {
   pname = "rofi-ts";
-  version = "unstable-2023-12-26";
+  version = "unstable-2024-04-06";
 
   src = fetchFromGitHub {
     owner = "CrackTC";
     repo = "rofi-ts";
-    rev = "35d3cd90e04ed85f77f91d1b5d004cad784ed944";
-    hash = "sha256-5pdmI5EXg0fRCfwYxzXtimS176OZ68j1GXX0qy66C3M=";
+    rev = "cdb4f5c53d53d3439a455b3848b284d0e4d84b5a";
+    hash = "sha256-t0g7+LPMCYGwJ9eJbTAYlC2LODZcr23JUgKjgadQYZk=";
   };
 
   nativeBuildInputs = [
