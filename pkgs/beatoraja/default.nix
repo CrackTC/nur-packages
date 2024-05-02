@@ -17,7 +17,7 @@ let
     };
   };
   pname = "beatoraja-modernchic";
-  version = "0.8.6";
+  version = "0.8.7";
   fullName = "beatoraja${version}-modernchic";
 in
 stdenv.mkDerivation {
@@ -25,7 +25,7 @@ stdenv.mkDerivation {
   name = "${pname}-${version}";
   src = fetchzip {
     url = "https://mocha-repository.info/download/${fullName}.zip";
-    hash = "sha256-IuaKRMXnmnqTdcXNncf8MCZwyusARjuzZL0IIFp8few=";
+    hash = "sha256-pQo/jWIMMT6btwsaO6wJbAPRCun+44GUPk0NMVpQcyc=";
   };
 
   nativeBuildInputs = [ unzip makeWrapper ];
