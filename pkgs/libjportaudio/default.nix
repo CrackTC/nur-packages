@@ -1,6 +1,6 @@
 { stdenv
 , fetchFromGitHub
-, oraclejdk8
+, jdk
 , cmake
 , portaudio
 }:
@@ -8,12 +8,6 @@
 let
   version = "0.1.0";
   pname = "libjportaudio";
-  jdk = oraclejdk8.overrideAttrs {
-    src = fetchTarball {
-      url = "https://static.sora.zip/nix/jdk-8u281-linux-x64.tar.gz";
-      sha256 = "0f9fb37p75cf7qfm67yc8ariqksnw8641kh2zcwvlrr4r8lgj70v";
-    };
-  };
 in
 stdenv.mkDerivation rec {
   inherit version pname;
