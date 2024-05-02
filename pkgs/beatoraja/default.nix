@@ -1,7 +1,7 @@
 { lib
 , stdenv
 , fetchzip
-, oraclejre8
+, jdk
 , unzip
 , openal
 , xrandr
@@ -10,12 +10,6 @@
 }:
 
 let
-  jre = oraclejre8.overrideAttrs {
-    src = fetchTarball {
-      url = "https://static.sora.zip/nix/jdk-8u281-linux-x64.tar.gz";
-      sha256 = "0f9fb37p75cf7qfm67yc8ariqksnw8641kh2zcwvlrr4r8lgj70v";
-    };
-  };
   pname = "beatoraja-modernchic";
   version = "0.8.7";
   fullName = "beatoraja${version}-modernchic";
@@ -53,7 +47,7 @@ stdenv.mkDerivation {
     echo "fi" >> beatoraja.sh
 
     echo 'cd "''${XDG_DATA_HOME:-$HOME/.local/share}/beatoraja"' >> beatoraja.sh
-    echo "exec ${jre}/bin/java -Xms1g -Xmx4g -jar '$out/share/beatoraja/beatoraja.jar'" >> beatoraja.sh
+    echo "exec ${jdk.override { enableJavaFX = true; }}/bin/java -Xms1g -Xmx4g -jar '$out/share/beatoraja/beatoraja.jar'" >> beatoraja.sh
     chmod +x beatoraja.sh
   '';
 
