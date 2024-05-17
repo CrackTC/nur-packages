@@ -14,14 +14,17 @@ rec {
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  example-package = pkgs.callPackage ./pkgs/example-package { };
   bbdown = pkgs.callPackage ./pkgs/bbdown { };
   beatoraja = pkgs.callPackage ./pkgs/beatoraja { inherit libjportaudio; };
   bmpv = pkgs.callPackage ./pkgs/bmpv { inherit bbdown danmaku2ass; };
   danmaku2ass = pkgs.callPackage ./pkgs/danmaku2ass { };
+  example-package = pkgs.callPackage ./pkgs/example-package { };
   freedownloadmanager = pkgs.libsForQt5.callPackage ./pkgs/freedownloadmanager { };
   hpfan = pkgs.callPackage ./pkgs/hpfan { };
   libjportaudio = pkgs.callPackage ./pkgs/libjportaudio { };
+  pyink = pkgs.callPackage ./pkgs/pyink {
+    inherit (pkgs.python3Packages) buildPythonPackage hatch-vcs hatchling black;
+  };
   rofi-ts = pkgs.callPackage ./pkgs/rofi-ts { };
   rofi-ts-test = pkgs.callPackage ./pkgs/rofi-ts-test { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
