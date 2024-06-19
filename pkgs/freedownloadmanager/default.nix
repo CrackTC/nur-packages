@@ -14,6 +14,7 @@
 , alsa-lib
 , qtwayland
 , libmysqlconnectorcpp
+, xcbutilcursor
 }:
 
 stdenv.mkDerivation rec {
@@ -28,6 +29,7 @@ stdenv.mkDerivation rec {
   unpackPhase = "dpkg-deb -x $src .";
 
   dontWrapQtApps = true;
+  autoPatchelfIgnoreMissingDeps = [ "libmimerapi.so" ];
 
   nativeBuildInputs = [
     dpkg
@@ -45,6 +47,7 @@ stdenv.mkDerivation rec {
     unixODBC
     stdenv.cc.cc
     libmysqlconnectorcpp
+    xcbutilcursor
   ] ++ (with gst_all_1; [
     gstreamer
     gst-libav
@@ -67,9 +70,6 @@ stdenv.mkDerivation rec {
     substituteInPlace $out/share/applications/freedownloadmanager.desktop \
       --replace 'Exec=/opt/freedownloadmanager/fdm' 'Exec=${pname}' \
       --replace "Icon=/opt/freedownloadmanager/icon.png" "Icon=$out/freedownloadmanager/icon.png"
-
-    wrapProgram $out/bin/${pname} \
-      --set QT_QPA_PLATFORM xcb
   '';
 
   meta = with lib; {
