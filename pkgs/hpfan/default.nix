@@ -3,21 +3,21 @@
 }:
 
 let
-  version = "unstable-2024-01-09";
+  version = "unstable-2024-07-04";
   pname = "hpfan";
 in
 stdenv.mkDerivation rec {
   inherit version pname;
   name = "${pname}-${version}";
-  src = fetchFromGitHub ({
+  src = fetchFromGitHub {
     owner = "CrackTC";
     repo = "hpfan";
-    rev = "67f608e1eea9d0dce9626652da211472a0e4ebd9";
-    sha256 = "sha256-OcLR388oW56RIicCPDmrWn27olnk3j+iRLn7tKiggbI=";
-  });
+    rev = "c8479e52144c63574353cf273da46e707e291b21";
+    hash = "sha256-H70jtZL1D3ZVAXgxuHsi1rCqrVl+SNJ/yFbNOk3UDTs=";
+  };
 
   buildPhase = ''
-    cc -Wall -Wextra -std=c99 -O2 -o hpfan hpfan.c
+    cc -Wall -Wextra -std=gnu99 -O2 -o hpfan hpfan.c
   '';
 
   installPhase = ''

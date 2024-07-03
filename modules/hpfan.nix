@@ -29,9 +29,15 @@ in
         type = lib.types.str;
         default = "";
         description = "Path to the file containing the PWM value";
-        example = "/sys/class/hwmon/hwmon5/pwm1_enable";
+        example = "/sys/class/hwmon/hwmon*/pwm1_enable";
       };
-      wall = lib.mkOption {
+      wallLow = lib.mkOption {
+        type = lib.types.nullOr lib.types.int;
+        default = null;
+        description = "The temperature at which the fan should stop boosting";
+        example = 45000;
+      };
+      wallHigh = lib.mkOption {
         type = lib.types.nullOr lib.types.int;
         default = null;
         description = "The temperature at which the fan should boost";
@@ -45,7 +51,8 @@ in
       args = mkArgs [
         (mkArg "" "-t" cfg.temperatureFile)
         (mkArg "" "-p" cfg.pwmFile)
-        (mkArg null "-w" cfg.wall)
+        (mkArg null "-L" cfg.wallLow)
+        (mkArg null "-H" cfg.wallHigh)
       ];
     in
     lib.mkIf cfg.enable {
