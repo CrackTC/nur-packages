@@ -9,7 +9,7 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "m13253";
     repo = "danmaku2ass";
-    rev = "master";
+    rev = "937dc92d76843c36655e6c7157ab97efbe53d551";
     sha256 = "sha256-Tr9od5Aj0jT2KPTVm7Mnpl0g+fFUsOWxKQA7BsWeiQM=";
   };
 
