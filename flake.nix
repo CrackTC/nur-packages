@@ -12,4 +12,8 @@
       });
       packages = forAllSystems (system: lib.filterAttrs (_: v: lib.isDerivation v) self.legacyPackages.${system});
     };
+  nixConfig = {
+    extra-substituters = [ "https://cracktc.cachix.org" ];
+    extra-trusted-public-keys = [ "cracktc.cachix.org-1:2hSlXvkhNchqB0wo+nz13bWdJo9/nxrAi/masgZCm2I=" ];
+  };
 }
