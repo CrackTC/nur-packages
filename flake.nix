@@ -8,7 +8,7 @@
     in
     {
       legacyPackages = forAllSystems (system: import ./default.nix {
-        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+        pkgs = nixpkgs.legacyPackages.${system};
       });
       packages = forAllSystems (system: lib.filterAttrs (_: v: lib.isDerivation v) self.legacyPackages.${system});
     };
