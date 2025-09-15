@@ -22,9 +22,9 @@ rec {
   freedownloadmanager = pkgs.libsForQt5.callPackage ./pkgs/freedownloadmanager { };
   hpfan = pkgs.callPackage ./pkgs/hpfan { };
   libjportaudio = pkgs.callPackage ./pkgs/libjportaudio { };
-  pyink = pkgs.callPackage ./pkgs/pyink {
-    inherit (pkgs.python3Packages) buildPythonPackage hatch-vcs hatchling black;
-  };
+  # pyink = pkgs.callPackage ./pkgs/pyink {
+  #   inherit (pkgs.python3Packages) buildPythonPackage hatch-vcs hatchling black;
+  # };
   rofi-ts = pkgs.callPackage ./pkgs/rofi-ts { };
   rofi-ts-test = pkgs.callPackage ./pkgs/rofi-ts-test { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
