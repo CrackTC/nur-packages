@@ -35,7 +35,6 @@ jobs:
           - cracktc
         nixPath:
           - nixpkgs=channel:nixos-unstable
-          - nixpkgs=channel:nixpkgs-unstable
           - nixpkgs=channel:nixos-24.11
     runs-on: ubuntu-latest
     steps:
