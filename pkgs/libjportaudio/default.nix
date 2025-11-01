@@ -15,8 +15,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "philburk";
     repo = "portaudio-java";
-    rev = "2ec5cc47d6f8abe85ddb09c34e69342bfe72c60b";
-    sha256 = "t+Pqtgstd1uJjvD4GKomZHMeSECNLeQJOrz97o+lV2Q=";
+    rev = "ed2d3bc78b42f9c877863618b0ec4dac216102cc";
+    sha256 = "sha256-tpJ4JqNFcuDmW70fLa0mW4fytjlU7h77IgMwS3msUX8=";
   };
 
   nativeBuildInputs = [ cmake portaudio ];
