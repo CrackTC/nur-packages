@@ -3,7 +3,7 @@
 , fetchFromGitHub
 , autoreconfHook
 , pkg-config
-, wrapGAppsHook
+, wrapGAppsHook3
 , cairo
 , glib
 , rofi-unwrapped
@@ -23,7 +23,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     autoreconfHook
     pkg-config
-    wrapGAppsHook
+    wrapGAppsHook3
   ];
 
   buildInputs = [

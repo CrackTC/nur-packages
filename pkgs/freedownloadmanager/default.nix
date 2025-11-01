@@ -2,7 +2,7 @@
 , stdenv
 , fetchurl
 , dpkg
-, wrapGAppsHook
+, wrapGAppsHook3
 , makeWrapper
 , autoPatchelfHook
 , udev
@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     dpkg
-    wrapGAppsHook
+    wrapGAppsHook3
     autoPatchelfHook
     pulseaudio
     alsa-lib
